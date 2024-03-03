@@ -22,7 +22,7 @@ struct SnapShotView: View {
                 ThreeDBarGraphView(data: viewmodel.streak, max: viewmodel.maxStreakCount)
                     .scaledToFit()
             } else {
-                Text("로딩중...")
+                Text("Loding...")
                     .font(.title3)
                     .foregroundStyle(Color.subText)
                 
