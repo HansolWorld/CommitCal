@@ -52,7 +52,7 @@ struct RenderView: View {
             HStack {
                 TextField("", text: $viewmodel.userName)
                     .placeholder(when: viewmodel.userName.isEmpty) {
-                        Text("UserName")
+                        Text("Github Nickname")
                             .foregroundStyle(Color.subText)
                     }
                     .padding(8)
