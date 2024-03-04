@@ -31,7 +31,7 @@ class GithubManager {
             }
     }
     
-    func getStreak(userName: String, done: @escaping ([ContributeData], ContributeData) -> Void) {
+    func getStreak(userName: String, done: @escaping ([ContributeData]?) -> Void) {
         let url = "https://github.com/users/\(userName)/contributions"
         
         AF.request(url, headers: nil)
@@ -46,9 +46,10 @@ class GithubManager {
                     let contributeDataList = self.parseHtmltoData(html: html)
                     let mystreaks = self.parseHtmltoDataForCount(html: html)
                     
-                    done(contributeDataList, mystreaks)
+                    done(contributeDataList)
                 case .failure(let error):
                     print("Error - \(error)")
+                    done(nil)
                 }
             }
     }

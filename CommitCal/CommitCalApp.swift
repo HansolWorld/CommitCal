@@ -12,7 +12,7 @@ struct CommitCalApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ChartView()
+                MainView()
             }
         }
     }

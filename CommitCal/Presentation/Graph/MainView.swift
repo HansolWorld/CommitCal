@@ -1,5 +1,5 @@
 //
-//  ChartView.swift
+//  MainView.swift
 //  CommitCal
 //
 //  Created by apple on 3/1/24.
@@ -8,10 +8,9 @@
 import SwiftUI
 import Kingfisher
 
-struct ChartView: View {
+struct MainView: View {
     @Environment(\.displayScale) var displayScale
-    @StateObject private var viewmodel = ChartViewModel()
-    @State private var isSummit = false
+    @StateObject private var viewmodel = MainViewModel()
     @State private var renderedImage = Image(systemName: "photo")
     
     
@@ -71,5 +70,5 @@ struct ChartView: View {
 }
 
 #Preview {
-    ChartView()
+    MainView()
 }

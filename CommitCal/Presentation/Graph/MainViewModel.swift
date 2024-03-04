@@ -1,5 +1,5 @@
 //
-//  ChartViewModel.swift
+//  MainViewModel.swift
 //  CommitCal
 //
 //  Created by apple on 3/1/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ChartViewModel: ObservableObject {
+class MainViewModel: ObservableObject {
     let githubManager = GithubManager()
     var maxStreakCount = 0
     var totalContribute = 0
@@ -23,6 +23,7 @@ class ChartViewModel: ObservableObject {
     @Published var isloading = false
     
     func getUser() {
+        self.isSumit = true
         githubManager.getUser(userName: userName) { user in
             self.user = user
         }
@@ -33,25 +34,29 @@ class ChartViewModel: ObservableObject {
         var longestDate = 0
         var longestContribution = 0
         
-        githubManager.getStreak(userName: userName) { contributeData, _ in
-            self.maxStreakCount = contributeData.map {$0.count}.max()!
-            self.streak = contributeData
-            
-            self.totalContribute = contributeData.first?.count ?? 0
-            self.startDate = contributeData.first?.date ?? ""
-            self.endDate = contributeData.last?.date ?? ""
-            
-            for index in 1..<contributeData.count {
-                self.totalContribute += contributeData[index].count
-                let contributeCount = contributeData[index - 1].count
-                if contributeCount != 0 {
-                    longestDate += 1
-                    longestContribution += contributeCount
-                } else {
-                    self.longestDate = max(self.longestDate, longestDate)
-                    self.longestContribute = max(self.longestContribute, longestContribution)
-                    longestDate = 0
-                    longestContribution = 0
+        githubManager.getStreak(userName: userName) { contributeData in
+            if let contributeData = contributeData {
+                self.maxStreakCount = contributeData.map {$0.count}.max()!
+                self.streak = contributeData
+                
+                self.totalContribute = contributeData.first?.count ?? 0
+                self.startDate = contributeData.first?.date ?? ""
+                self.endDate = contributeData.last?.date ?? ""
+                
+                for index in 1..<contributeData.count {
+                    self.totalContribute += contributeData[index].count
+                    let contributeCount = contributeData[index - 1].count
+                    if contributeCount != 0 {
+                        longestDate += 1
+                        longestContribution += contributeCount
+                    } else {
+                        if self.longestDate < longestDate {
+                            self.longestDate = longestDate
+                            self.longestContribute = longestContribution
+                        }
+                        longestDate = 0
+                        longestContribution = 0
+                    }
                 }
             }
             

@@ -157,5 +157,5 @@ class GraghScene: SCNScene {
 }
 
 #Preview {
-    ThreeDBarGraphView(data: ChartViewModel.dummyStreak, max: ChartViewModel.dummyStreak.map{$0.count}.max()!)
+    ThreeDBarGraphView(data: MainViewModel.dummyStreak, max: MainViewModel.dummyStreak.map{$0.count}.max()!)
 }

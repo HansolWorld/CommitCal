@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct RenderView: View {
-    @ObservedObject var viewmodel: ChartViewModel
+    @ObservedObject var viewmodel: MainViewModel
     
     var body: some View {
         ZStack {
@@ -17,7 +17,7 @@ struct RenderView: View {
                 .ignoresSafeArea(.all)
             VStack(spacing: 4) {
                 HeaderView()
-                SnapShotView(viewmodel: viewmodel)
+                StatisticView(viewmodel: viewmodel)
             }
         }
     }
@@ -59,7 +59,6 @@ struct RenderView: View {
                     .onSubmit {
                         viewmodel.getStreak()
                         viewmodel.getUser()
-                        viewmodel.isSumit = true
                     }
                     .background {
                         RoundedRectangle(cornerRadius: 4)
@@ -71,7 +70,6 @@ struct RenderView: View {
                 Button(action: {
                     viewmodel.getStreak()
                     viewmodel.getUser()
-                    viewmodel.isSumit = true
                 }) {
                     Text("Search")
                         .padding(8)

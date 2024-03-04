@@ -1,5 +1,5 @@
 //
-//  SnapShotView.swift
+//  StatisticView.swift
 //  CommitCal
 //
 //  Created by apple on 3/3/24.
@@ -7,25 +7,36 @@
 
 import SwiftUI
 
-struct SnapShotView: View {
+struct StatisticView: View {
     let colums = [
         GridItem(.flexible(maximum: .infinity), spacing: 12),
         GridItem(.flexible(maximum: .infinity), spacing: 12)
     ]
     
-    @ObservedObject var viewmodel: ChartViewModel
+    @ObservedObject var viewmodel: MainViewModel
 
     var body: some View {
         VStack {
             Spacer()
-            if viewmodel.streak.count == 364 {
-                ThreeDBarGraphView(data: viewmodel.streak, max: viewmodel.maxStreakCount)
-                    .scaledToFit()
-            } else {
+            if !viewmodel.isSumit {
+                Text("Please enter a nickname, and Summit")
+                    .font(.title3)
+                    .foregroundStyle(Color.subText)
+            } else if viewmodel.user == nil, viewmodel.isSumit {
+                Text("Non-existent user")
+                    .font(.title3)
+                    .foregroundStyle(Color.subText)
+            } else if viewmodel.isloading {
                 Text("Loding...")
                     .font(.title3)
                     .foregroundStyle(Color.subText)
-                
+            } else if viewmodel.streak.reduce(0, { return $0 + $1.count }) == 0 {
+                Text("There is no contribution")
+                    .font(.title3)
+                    .foregroundStyle(Color.subText)
+            } else {
+                ThreeDBarGraphView(data: viewmodel.streak, max: viewmodel.maxStreakCount)
+                    .scaledToFit()
             }
             Spacer()
             VStack(alignment: .leading) {
@@ -115,5 +126,5 @@ struct SnapShotView: View {
 }
 
 #Preview {
-    SnapShotView(viewmodel: ChartViewModel())
+    StatisticView(viewmodel: MainViewModel())
 }

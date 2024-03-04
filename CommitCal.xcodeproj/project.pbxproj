@@ -11,9 +11,9 @@
 		FF04401A2B91A67100949B8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF0440192B91A67100949B8C /* Assets.xcassets */; };
 		FF04401D2B91A67100949B8C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF04401C2B91A67100949B8C /* Preview Assets.xcassets */; };
 		FF0440262B91BCD600949B8C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FF0440252B91BCD600949B8C /* Alamofire */; };
-		FF04402C2B91CE9D00949B8C /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04402B2B91CE9D00949B8C /* ChartView.swift */; };
+		FF04402C2B91CE9D00949B8C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04402B2B91CE9D00949B8C /* MainView.swift */; };
 		FF0440302B91DD9300949B8C /* GithubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04402F2B91DD9300949B8C /* GithubManager.swift */; };
-		FF04403A2B91E51D00949B8C /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0440392B91E51D00949B8C /* ChartViewModel.swift */; };
+		FF04403A2B91E51D00949B8C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0440392B91E51D00949B8C /* MainViewModel.swift */; };
 		FF04403C2B91EC2400949B8C /* GIthubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04403B2B91EC2400949B8C /* GIthubUser.swift */; };
 		FF04403F2B92038700949B8C /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = FF04403E2B92038700949B8C /* SwiftSoup */; };
 		FF0440412B9203BC00949B8C /* ParseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0440402B9203BC00949B8C /* ParseKeys.swift */; };
@@ -23,7 +23,7 @@
 		FF04404F2B9384A400949B8C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FF04404E2B9384A400949B8C /* Kingfisher */; };
 		FF085C722B9443B000F58F4C /* Extension_Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF085C712B9443B000F58F4C /* Extension_Modifier.swift */; };
 		FF085C742B9444A500F58F4C /* Extension_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF085C732B9444A500F58F4C /* Extension_View.swift */; };
-		FF085C762B9458F800F58F4C /* SnapShotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF085C752B9458F800F58F4C /* SnapShotView.swift */; };
+		FF085C762B9458F800F58F4C /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF085C752B9458F800F58F4C /* StatisticView.swift */; };
 		FF085C782B9463CD00F58F4C /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF085C772B9463CD00F58F4C /* RenderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,9 +33,9 @@
 		FF0440192B91A67100949B8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF04401C2B91A67100949B8C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FF0440232B91A6A800949B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		FF04402B2B91CE9D00949B8C /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		FF04402B2B91CE9D00949B8C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FF04402F2B91DD9300949B8C /* GithubManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubManager.swift; sourceTree = "<group>"; };
-		FF0440392B91E51D00949B8C /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		FF0440392B91E51D00949B8C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FF04403B2B91EC2400949B8C /* GIthubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIthubUser.swift; sourceTree = "<group>"; };
 		FF0440402B9203BC00949B8C /* ParseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseKeys.swift; sourceTree = "<group>"; };
 		FF0440422B9203FA00949B8C /* ContributeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributeData.swift; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		FF0440492B920F9100949B8C /* ThreeDBarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDBarGraphView.swift; sourceTree = "<group>"; };
 		FF085C712B9443B000F58F4C /* Extension_Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Modifier.swift; sourceTree = "<group>"; };
 		FF085C732B9444A500F58F4C /* Extension_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_View.swift; sourceTree = "<group>"; };
-		FF085C752B9458F800F58F4C /* SnapShotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotView.swift; sourceTree = "<group>"; };
+		FF085C752B9458F800F58F4C /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		FF085C772B9463CD00F58F4C /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,11 +121,11 @@
 		FF0440372B91E42900949B8C /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				FF04402B2B91CE9D00949B8C /* ChartView.swift */,
+				FF04402B2B91CE9D00949B8C /* MainView.swift */,
 				FF085C772B9463CD00F58F4C /* RenderView.swift */,
-				FF085C752B9458F800F58F4C /* SnapShotView.swift */,
+				FF085C752B9458F800F58F4C /* StatisticView.swift */,
 				FF0440492B920F9100949B8C /* ThreeDBarGraphView.swift */,
-				FF0440392B91E51D00949B8C /* ChartViewModel.swift */,
+				FF0440392B91E51D00949B8C /* MainViewModel.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -220,14 +220,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF085C762B9458F800F58F4C /* SnapShotView.swift in Sources */,
+				FF085C762B9458F800F58F4C /* StatisticView.swift in Sources */,
 				FF0440432B9203FA00949B8C /* ContributeData.swift in Sources */,
 				FF0440302B91DD9300949B8C /* GithubManager.swift in Sources */,
 				FF04403C2B91EC2400949B8C /* GIthubUser.swift in Sources */,
-				FF04402C2B91CE9D00949B8C /* ChartView.swift in Sources */,
+				FF04402C2B91CE9D00949B8C /* MainView.swift in Sources */,
 				FF085C722B9443B000F58F4C /* Extension_Modifier.swift in Sources */,
 				FF085C782B9463CD00F58F4C /* RenderView.swift in Sources */,
-				FF04403A2B91E51D00949B8C /* ChartViewModel.swift in Sources */,
+				FF04403A2B91E51D00949B8C /* MainViewModel.swift in Sources */,
 				FF0440162B91A66F00949B8C /* CommitCalApp.swift in Sources */,
 				FF0440482B92045F00949B8C /* Extension_Date.swift in Sources */,
 				FF085C742B9444A500F58F4C /* Extension_View.swift in Sources */,
