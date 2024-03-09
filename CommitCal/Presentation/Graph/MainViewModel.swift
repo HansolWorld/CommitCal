@@ -28,16 +28,34 @@ class MainViewModel: ObservableObject {
             self.user = user
         }
     }
- 
+    
     func getStreak() {
         isloading = true
         var longestDate = 0
         var longestContribution = 0
+        self.streak = []
         
         githubManager.getStreak(userName: userName) { contributeData in
             if let contributeData = contributeData {
                 self.maxStreakCount = contributeData.map {$0.count}.max()!
-                self.streak = contributeData
+
+                var emptyCount = 0
+                if contributeData.first?.weekend == "Sun" {
+                    emptyCount = 6
+                } else if contributeData.first?.weekend == "Mon" {
+                    emptyCount = 5
+                } else if contributeData.first?.weekend == "Tue" {
+                    emptyCount = 4
+                } else if contributeData.first?.weekend == "Wed" {
+                    emptyCount = 3
+                } else if contributeData.first?.weekend == "Thu" {
+                    emptyCount = 2
+                } else if contributeData.first?.weekend == "Fri" {
+                    emptyCount = 1
+                }
+                
+                self.streak = Array(repeating: ContributeData(count: 0, weekend: "", date: ""), count: emptyCount)
+                self.streak += contributeData
                 
                 self.totalContribute = contributeData.first?.count ?? 0
                 self.startDate = contributeData.first?.date ?? ""

@@ -21,18 +21,20 @@ struct ThreeDBarGraphView: View {
 }
 
 class GraghScene: SCNScene {
+    var rowCount = 0
+    
     convenience init(data: [ContributeData], max: Int) {
         self.init()
         background.contents = UIColor.background
 
-        initFlow()
         initBox(data: data, max: max)
+        initFlow()
         initCamera()
     }
     
     func initFlow() {
         let flow = SCNBox(
-            width: 52.1,
+            width: CGFloat(rowCount) + 1.1,
             height: 1,
             length: 7,
             chamferRadius: 0.0
@@ -64,8 +66,18 @@ class GraghScene: SCNScene {
     func initBox(data: [ContributeData], max: Int) {
         let cubeSize: CGFloat = 0.9
         
-        for row in 0..<52 {
+        print(data.count)
+        print(data.count/7)
+        print(Float(data.count).truncatingRemainder(dividingBy: 7))
+        print(Float(data.count).truncatingRemainder(dividingBy: 7) == 0 ? 0 : 1)
+        
+        self.rowCount = data.count/7 + (Float(data.count).truncatingRemainder(dividingBy: 7) == 0 ? 0 : 1)
+        
+        for row in 0..<rowCount {
             for col in 0..<7 {
+                if row*7+col >= data.count {
+                    continue
+                }
                 
                 var randomHeight = data[row*7+col].count
                 if randomHeight == 0 {
