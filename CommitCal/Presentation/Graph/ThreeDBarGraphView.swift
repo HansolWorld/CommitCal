@@ -79,16 +79,26 @@ class GraghScene: SCNScene {
                     continue
                 }
                 
-                var randomHeight = data[row*7+col].count
-                if randomHeight == 0 {
+                var commitCount = CGFloat(data[row*7+col].count)
+                var height: CGFloat = 6
+                
+                if commitCount == 0 {
                     continue
+                } else if commitCount < 5 {
+                    height = 1
+                } else if commitCount < 10 {
+                    height = 2
+                } else if commitCount < 15 {
+                    height = 3
+                } else if commitCount < 20 {
+                    height = 4
+                } else if commitCount < 25 {
+                    height = 5
                 }
-                randomHeight = randomHeight*6/max+1
-                let Height = CGFloat(randomHeight)
                 
                 let box = SCNBox(
                     width: cubeSize,
-                    height: Height,
+                    height: height,
                     length: cubeSize,
                     chamferRadius: 0.0
                 )
@@ -101,35 +111,35 @@ class GraghScene: SCNScene {
                     SCNMaterial()
                 ]
                 
-                if Height == 1 {
+                if height == 1 {
                     materials[0].diffuse.contents = UIColor.boxLevel1Right
                     materials[1].diffuse.contents = UIColor.boxLevel1Front
                     materials[2].diffuse.contents = UIColor.boxLevel1Back
                     materials[3].diffuse.contents = UIColor.boxLevel1Left
                     materials[4].diffuse.contents = UIColor.boxLevel1Top
                     materials[5].diffuse.contents = UIColor.boxLevel1Bottom
-                } else if Height == 2 {
+                } else if height == 2 {
                     materials[0].diffuse.contents = UIColor.boxLevel2Right
                     materials[1].diffuse.contents = UIColor.boxLevel2Front
                     materials[2].diffuse.contents = UIColor.boxLevel2Back
                     materials[3].diffuse.contents = UIColor.boxLevel2Left
                     materials[4].diffuse.contents = UIColor.boxLevel2Top
                     materials[5].diffuse.contents = UIColor.boxLevel2Bottom
-                } else if Height == 3 {
+                } else if height == 3 {
                     materials[0].diffuse.contents = UIColor.boxLevel3Right
                     materials[1].diffuse.contents = UIColor.boxLevel3Front
                     materials[2].diffuse.contents = UIColor.boxLevel3Back
                     materials[3].diffuse.contents = UIColor.boxLevel3Left
                     materials[4].diffuse.contents = UIColor.boxLevel3Top
                     materials[5].diffuse.contents = UIColor.boxLevel3Bottom
-                } else if Height == 4 {
+                } else if height == 4 {
                     materials[0].diffuse.contents = UIColor.boxLevel4Right
                     materials[1].diffuse.contents = UIColor.boxLevel4Front
                     materials[2].diffuse.contents = UIColor.boxLevel4Back
                     materials[3].diffuse.contents = UIColor.boxLevel4Left
                     materials[4].diffuse.contents = UIColor.boxLevel4Top
                     materials[5].diffuse.contents = UIColor.boxLevel4Bottom
-                } else if Height == 5 {
+                } else if height == 5 {
                     materials[0].diffuse.contents = UIColor.boxLevel5Right
                     materials[1].diffuse.contents = UIColor.boxLevel5Front
                     materials[2].diffuse.contents = UIColor.boxLevel5Back
@@ -150,7 +160,7 @@ class GraghScene: SCNScene {
                 let cubeNode = SCNNode(geometry: box)
                 cubeNode.position = SCNVector3(
                     Float(row - 26),
-                    Float(Height)/2,
+                    Float(height)/2,
                     Float(col)
                 )
                 self.rootNode.addChildNode(cubeNode)
