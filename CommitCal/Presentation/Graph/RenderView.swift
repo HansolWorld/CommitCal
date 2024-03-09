@@ -71,7 +71,7 @@ struct RenderView: View {
                     viewmodel.getStreak()
                     viewmodel.getUser()
                 }) {
-                    Text("Search")
+                    Text("Summit")
                         .padding(8)
                         .foregroundColor(Color.text)
                         .background {
