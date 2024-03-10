@@ -52,8 +52,8 @@ struct StatisticView: View {
                 LazyVGrid(columns: colums, spacing: 12) {
                     TotalView()
                     MaxView()
-                    LogestTotalView()
                     LogestView()
+                    StreakPerRangeView()
                 }
             }
             .padding(12)
@@ -72,25 +72,42 @@ struct StatisticView: View {
                 Text("Days")
                     .font(.caption2)
             }
+            Spacer()
         }
         .modifier(TextModifier())
     }
     
     @ViewBuilder
-    func LogestTotalView() -> some View {
+    func StreakPerRangeView() -> some View {
         VStack {
-            Text("Longest Contribute")
+            Text("Number of contributions")
                 .font(.subheadline)
             Spacer()
-            VStack(spacing: 4) {
-                Text("\(viewmodel.longestContribute)")
-                    .font(.title)
-                Text("Contributions")
-                    .font(.caption2)
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("1~4:\t\t\(viewmodel.streakPerRange[0])")
+                }
+                HStack {
+                    Text("5~9:\t\t\(viewmodel.streakPerRange[1])")
+                }
+                HStack {
+                    Text("10~14:\t\(viewmodel.streakPerRange[2])")
+                }
+                HStack {
+                    Text("15~19:\t\(viewmodel.streakPerRange[3])")
+                }
+                HStack {
+                    Text("20~24:\t\(viewmodel.streakPerRange[4])")
+                }
+                HStack {
+                    Text("25~:\t\t\(viewmodel.streakPerRange[5])")
+                }
             }
+            .font(.caption2)
         }
         .modifier(TextModifier())
     }
+    
     
     @ViewBuilder
     func TotalView() -> some View {
@@ -104,6 +121,7 @@ struct StatisticView: View {
                 Text("Contributions")
                     .font(.caption2)
             }
+            Spacer()
         }
         .modifier(TextModifier())
     }
@@ -120,6 +138,7 @@ struct StatisticView: View {
                 Text("Contributions")
                     .font(.caption2)
             }
+            Spacer()
         }
         .modifier(TextModifier())
     }

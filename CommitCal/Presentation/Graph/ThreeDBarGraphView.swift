@@ -79,7 +79,7 @@ class GraghScene: SCNScene {
                     continue
                 }
                 
-                var commitCount = CGFloat(data[row*7+col].count)
+                let commitCount = CGFloat(data[row*7+col].count)
                 var height: CGFloat = 6
                 
                 if commitCount == 0 {
