@@ -80,20 +80,29 @@ class MainViewModel: ObservableObject {
                 self.startDate = contributeData.first?.date ?? ""
                 self.endDate = contributeData.last?.date ?? ""
                 
-                for index in 1..<contributeData.count {
+                var logestDateCount = 0
+                var longestContributionCount = 0
+                
+                for index in contributeData.indices {
                     self.totalContribute += contributeData[index].count
-                    let contributeCount = contributeData[index - 1].count
+                    let contributeCount = contributeData[index].count
+                    
                     if contributeCount != 0 {
-                        longestDate += 1
-                        longestContribution += contributeCount
+                        logestDateCount += 1
+                        longestContributionCount += contributeCount
                     } else {
-                        if self.longestDate < longestDate {
-                            self.longestDate = longestDate
-                            self.longestContribute = longestContribution
+                        if self.longestDate < logestDateCount {
+                            self.longestDate = logestDateCount
+                            self.longestContribute = longestContributionCount
                         }
-                        longestDate = 0
-                        longestContribution = 0
+                        logestDateCount = 0
+                        longestContributionCount = 0
                     }
+                }
+                
+                if self.longestDate < logestDateCount {
+                    self.longestDate = logestDateCount
+                    self.longestContribute = longestContributionCount
                 }
             }
             

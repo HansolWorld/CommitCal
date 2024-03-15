@@ -66,11 +66,6 @@ class GraghScene: SCNScene {
     func initBox(data: [ContributeData], max: Int) {
         let cubeSize: CGFloat = 0.9
         
-        print(data.count)
-        print(data.count/7)
-        print(Float(data.count).truncatingRemainder(dividingBy: 7))
-        print(Float(data.count).truncatingRemainder(dividingBy: 7) == 0 ? 0 : 1)
-        
         self.rowCount = data.count/7 + (Float(data.count).truncatingRemainder(dividingBy: 7) == 0 ? 0 : 1)
         
         for row in 0..<rowCount {
