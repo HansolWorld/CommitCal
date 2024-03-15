@@ -34,7 +34,7 @@ class GraghScene: SCNScene {
     
     func initFlow() {
         let flow = SCNBox(
-            width: CGFloat(rowCount) + 1.1,
+            width: CGFloat(rowCount) + 0.1,
             height: 1,
             length: 7,
             chamferRadius: 0.0
@@ -59,7 +59,7 @@ class GraghScene: SCNScene {
         flow.materials = materials
         
         let flowNode = SCNNode(geometry: flow)
-        flowNode.position = SCNVector3(-0.5, -0.5, 3)
+        flowNode.position = SCNVector3(0, -0.5, 3)
         self.rootNode.addChildNode(flowNode)
     }
     

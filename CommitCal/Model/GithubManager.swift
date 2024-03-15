@@ -64,7 +64,7 @@ class GithubManager {
             let tooltips: Elements = try doc.getElementsByTag(ParseKeys.tooltip)
             let days: [Element] = rects.array().filter { $0.hasAttr(ParseKeys.date) }
             let sortedDays = sortDaysByDate(days, with: isoDateFormatter)
-            let weekend = sortedDays.suffix(364)
+            let weekend = sortedDays.suffix(371)
             
             var tooltipsTextById = [String: String]()
             for tooltip in tooltips.array() {

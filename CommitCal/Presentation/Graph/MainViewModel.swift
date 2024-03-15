@@ -32,27 +32,23 @@ class MainViewModel: ObservableObject {
     
     func getStreak() {
         isloading = true
-        var longestDate = 0
-        var longestContribution = 0
-        self.streak = []
-        
         githubManager.getStreak(userName: userName) { contributeData in
             if let contributeData = contributeData {
                 self.maxStreakCount = contributeData.map {$0.count}.max()!
 
                 var emptyCount = 0
-                if contributeData.first?.weekend == "Sun" {
-                    emptyCount = 6
-                } else if contributeData.first?.weekend == "Mon" {
-                    emptyCount = 5
+                if contributeData.first?.weekend == "Mon" {
+                    emptyCount = 1
                 } else if contributeData.first?.weekend == "Tue" {
-                    emptyCount = 4
+                    emptyCount = 2
                 } else if contributeData.first?.weekend == "Wed" {
                     emptyCount = 3
                 } else if contributeData.first?.weekend == "Thu" {
-                    emptyCount = 2
+                    emptyCount = 4
                 } else if contributeData.first?.weekend == "Fri" {
-                    emptyCount = 1
+                    emptyCount = 5
+                } else if contributeData.first?.weekend == "Sat" {
+                    emptyCount = 6
                 }
                 
                 self.streak = Array(repeating: ContributeData(count: 0, weekend: "", date: ""), count: emptyCount)
@@ -106,6 +102,12 @@ class MainViewModel: ObservableObject {
                 }
             }
             
+            self.streak.forEach {
+                print($0)
+            }
+            print(self.startDate)
+            print(self.endDate)
+            print(self.streak.count)
             self.isloading = false
         }
     }
@@ -119,7 +121,7 @@ class MainViewModel: ObservableObject {
         let weekDateFormatter = DateFormatter()
         weekDateFormatter.dateFormat = "E"
         
-        for count in 0..<364 {
+        for count in 0..<371 {
             let date = Calendar.current.date(byAdding: .day, value: -count, to: today)!
             
             contributeDatas.append(
